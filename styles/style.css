@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+}
+input {
+    width: 210px;
+    margin-bottom: 10px;
+}
+
+#inputButton,#outputAmount {
+    margin: 10px;
+    float: right;
+}

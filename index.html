@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vendors/jquery-3.3.1.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Weekend Project 1 - Salary Calculator</title>
+</head>
+<body class="container">
+    <h1 id="head" class="header">Salary Calculator</h1>
+    <div id="inputDiv">
+        <h3 id="inputTitle">Add Employee</h3>
+        <div id="input">
+            <input type="text" id="firstName" placeholder="First Name">
+            <input type="text" id="lastName" placeholder="Last Name">
+            <input type="text" id="ID" placeholder="ID">
+            <input type="text" id="title" placeholder="Title">
+            <input type="number" id="salary" placeholder="Annual Salary">
+        </div>
+        <div id="inputButton">
+            <button id="submitButton">Submit</button>
+        </div>
+    </div>
+    <div id="outputDiv">
+        <h3 id="outputTitle">Employees</h3>
+        <table id="outputTable" class="table table-bordered">
+            <tr>
+                <th id="outputFirst">First Name</th>
+                <th id="outputLast">Last Name</th>
+                <th id="outputID">ID</th>
+                <th id="outputTitle">Title</th>
+                <th id="outputSalary">Salary</th>
+            </tr>
+        </table>
+    </div>
+    <div id="outputAmount">
+        Total Monthly: 
+    </div>
+</body>
+</html>

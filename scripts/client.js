@@ -11,15 +11,13 @@ class Employee{
 } // end Employee
 
 $( document ).ready( function(){
-    $('.input').val('');
-    $('.outputEl').remove();
+    $( '.input' ).val( '' );
+    $( '.outputEl' ).remove();
     // let totalMonthly = 0;
-    let totalOutput = $('#outputAmount');
+    let totalOutput = $( '#outputAmount' );
     document.getElementById( 'outputAmount' ).innerHTML = '<h3>Total Monthly: 0</h3>' ;
     $('#submitButton').on( 'click', function() {
             // push new Employee inputs into employees array
-            console.log('in onInputClick');
-        
             employees.push( new Employee( $( '#firstName' ).val(), 
                                             $( '#lastName' ).val(), 
                                             $('#ID').val(),
@@ -32,24 +30,25 @@ $( document ).ready( function(){
 });
 
 function runOutput() {
-    let output = $('#outputTable');
-    $('.outputEl').empty();
+    let output = $( '#outputTable' );
+    $( '.outputEl' ).empty(); // empty data for new input
     let totalMonthly = 0;
     for (employee of employees ){
-        let outputVal = '<tr class="outputEl">';
+        // add table row
+        let outputVal = `<tr id="${employee.firstName} ${employee.lastName}" class="outputEl">`;
             outputVal += '<td>' + employee.firstName + '</td>';
             outputVal += '<td>' + employee.lastName + '</td>';
             outputVal += '<td>' + employee.ID + '</td>';
             outputVal += '<td>' + employee.title + '</td>';
             outputVal += '<td>' + employee.salary + '</td>';
+            outputVal += `<td><button id="${employee.firstName} ${employee.lastName}">Delete</button></td>`
         outputVal += '</tr>';
-        // outputVal += '</tbody>';
         output.append( outputVal );
         totalMonthly += employee.salary;
-
-    }
+    } // end for
+    // append total monthly expenses
     document.getElementById( 'outputAmount' ).innerHTML = '<h3>Total Monthly: ' + totalMonthly + '</h3>';
-    if ( totalMonthly > 20000) {
+    if ( totalMonthly > 20000 ) {
         document.getElementById( 'outputAmount' ).style.color = "red";
-    }
-}
+    } // end if
+} // end runOutput

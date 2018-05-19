@@ -46,6 +46,10 @@ function runOutput() {
         // outputVal += '</tbody>';
         output.append( outputVal );
         totalMonthly += employee.salary;
+
     }
     document.getElementById( 'outputAmount' ).innerHTML = '<h3>Total Monthly: ' + totalMonthly + '</h3>';
+    if ( totalMonthly > 20000) {
+        document.getElementById( 'outputAmount' ).style.color = "red";
+    }
 }

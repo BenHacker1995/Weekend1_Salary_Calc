@@ -4,6 +4,7 @@ h1 {
 input {
     width: 210px;
     margin-bottom: 10px;
+    
 }
 
 #inputButton,#outputAmount {

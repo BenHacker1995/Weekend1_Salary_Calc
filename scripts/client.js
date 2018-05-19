@@ -61,20 +61,41 @@ $( document ).ready( function(){
                                             $('#title').val(),
                                             parseInt( $('#salary').val() ) ) );
             console.log( employees );
-            let output = $('#outputTable');
+            runOutput();
+            // let output = $('#outputTable');
+            // let outputVal = '<tr class="outputEl">';
             // append new employee to table
-            for (employee of employees ){
-                output.not(':first').empty();
-                let outputVal = '<tr class="outputEl">';
-                    outputVal += '<td>' + employee.firstName + '</td>';
-                    outputVal += '<td>' + employee.lastName + '</td>';
-                    outputVal += '<td>' + employee.ID + '</td>';
-                    outputVal += '<td>' + employee.title + '</td>';
-                    outputVal += '<td>' + employee.salary + '</td>';
-                outputVal += '</tr>';
-                // outputVal += '</tbody>';
-                output.append( outputVal );
-            }
+            // for (employee of employees ){
+            //     let output = $('#outputTable');
+            //     let outputVal = '<tr class="outputEl">';
+            //     $('.outputEl').empty();
+            //     // let outputVal = '<tr class="outputEl">';
+            //         outputVal += '<td>' + employee.firstName + '</td>';
+            //         outputVal += '<td>' + employee.lastName + '</td>';
+            //         outputVal += '<td>' + employee.ID + '</td>';
+            //         outputVal += '<td>' + employee.title + '</td>';
+            //         outputVal += '<td>' + employee.salary + '</td>';
+            //     outputVal += '</tr>';
+            //     // outputVal += '</tbody>';
+            //     output.append( outputVal );
+            // }
             $('#input').val(''); // clear inputs on inputButton click
+
     });
 });
+
+function runOutput() {
+    let output = $('#outputTable');
+    $('.outputEl').empty();
+    for (employee of employees ){
+        let outputVal = '<tr class="outputEl">';
+            outputVal += '<td>' + employee.firstName + '</td>';
+            outputVal += '<td>' + employee.lastName + '</td>';
+            outputVal += '<td>' + employee.ID + '</td>';
+            outputVal += '<td>' + employee.title + '</td>';
+            outputVal += '<td>' + employee.salary + '</td>';
+        outputVal += '</tr>';
+        // outputVal += '</tbody>';
+        output.append( outputVal );
+    }
+}

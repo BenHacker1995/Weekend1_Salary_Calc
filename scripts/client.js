@@ -27,7 +27,7 @@ $( document ).ready( function(){
             $('.input').val(''); // clear inputs on inputButton click
     });
     // let deleteButton = $('button .deleteButton');
-    $('button').on( 'click', function() {
+    $('.button').on( 'click', function() {
         // deleteRow();
         // $( this ).closest( 'td' ).find( '.delete' ).remove();
         console.log('in deleteRow');
@@ -35,25 +35,27 @@ $( document ).ready( function(){
 });
 
 // let deleteButton = '<tr><table class="deleteButtons"><tr><td><button class="delete">Delete</button></td></tr></table>'
-let deleteButton = '<tr><td><button class="delete">Delete</button></td></tr>';
+// let deleteButton = '<tr><td><button class="delete">Delete</button></td></tr>';
 
 function runOutput() {
-    $( '#inputOut' ).empty(); // empty data for new input
+    $( '.output' ).empty(); // empty data for new input
     let totalMonthly = 0;
     for (employee of employees ){
         // outputButton.append( deleteButton );
         // add table row
-        let outputVal = `<tr id="${employee.firstName}.${employee.lastName}" class="outputEl">`;
-            outputVal += '<td>' + employee.firstName + '</td>';
-            outputVal += '<td>' + employee.lastName + '</td>';
-            outputVal += '<td>' + employee.ID + '</td>';
-            outputVal += '<td>' + employee.title + '</td>';
-            outputVal += '<td>' + employee.salary + '</td>';
+        let outputVal = `<tr id="${employee.firstName}.${employee.lastName}">`;
+            outputVal += '<td class="output">' + employee.firstName + '</td>';
+            outputVal += '<td class="output">' + employee.lastName + '</td>';
+            outputVal += '<td class="output">' + employee.ID + '</td>';
+            outputVal += '<td class="output">' + employee.title + '</td>';
+            outputVal += '<td class="output">' + employee.salary + '</td>';
+            outputVal += '<td class+"deleteButtons"><button class="button">Delete</button></td>'
         outputVal += '</tr>';
-        $('.deleteButtons').append( deleteButton );
+        // $('.deleteButtons').append( deleteButton );
         $('#inputOut').append( outputVal );
         totalMonthly += employee.salary;
     } // end for
+    // $('#deleteButtons').append( deleteButton );
     // append total monthly expenses
     document.getElementById( 'outputAmount' ).innerHTML = '<h3>Total Monthly: ' + totalMonthly + '</h3>';
     if ( totalMonthly > 20000 ) {

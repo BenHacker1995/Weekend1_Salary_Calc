@@ -7,10 +7,16 @@ input {
     
 }
 
-/* .btn-group {
+#inputOut {
+    float: left;
+    display: inline-table;
+}
 
-    display: inline;
-} */
+#deleteButtons {
+    float: right;
+}
+
+
 
 #inputButton,#outputAmount {
     margin: 10px;

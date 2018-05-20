@@ -1,4 +1,5 @@
 let employees = []; // empty employees array
+let totalMonthly = 0;
 
 class Employee{
     constructor( firstName, lastName, ID, title, salary) {
@@ -24,45 +25,37 @@ $( document ).ready( function(){
                                             parseInt( $('#salary').val() ) ) );
             console.log( employees );
             runOutput();
+            totalMonthly += parseInt( $('#salary').val() );
+            document.getElementById( 'outputAmount' ).innerHTML = '<h3>Total Monthly: ' + totalMonthly+ '</h3>';
+            if ( totalMonthly > 20000 ) {
+                document.getElementById( 'outputAmount' ).style.color = "red";
+            } // end if
             $('.input').val(''); // clear inputs on inputButton click
     });
-    // let deleteButton = $('button .deleteButton');
-    // $('.deleteButtons .btn-default').click( function() {
+
         $('table').on('click', 'input[type="button"]', function(){
-            // $(this).closest('tr').remove()
-        // deleteRow();
-        // $( this ).closest( 'td' ).find( '.delete' ).remove();
-        console.log('in deleteRow');
+            totalMonthly -= ($(this).closest('#salary')).val();
+            document.getElementById( 'outputAmount' ).innerHTML = '<h3>Total Monthly: ' + totalMonthly+ '</h3>';
+            $(this).closest('tr').empty();
+
     });
 });
 
-// let deleteButton = '<tr><table class="deleteButtons"><tr><td><button class="delete">Delete</button></td></tr></table>'
-// let deleteButton = '<tr><td><button class="delete">Delete</button></td></tr>';
 
 function runOutput() {
-    $( '.output' ).empty(); // empty data for new input
-    let totalMonthly = 0;
-    for (employee of employees ){
-        // outputButton.append( deleteButton );
-        // add table row
-        let outputVal = `<tr id="${employee.firstName}.${employee.lastName}" class="output">`;
-            outputVal += '<td class="output">' + employee.firstName + '</td>';
-            outputVal += '<td class="output">' + employee.lastName + '</td>';
-            outputVal += '<td class="output">' + employee.ID + '</td>';
-            outputVal += '<td class="output">' + employee.title + '</td>';
-            outputVal += '<td class="output">' + employee.salary + '</td>';
-            outputVal += '<td class="output"><input type="button" value="Delete" class="btn-default"></td>'
+    // add table row
+    let outputVal = `<tr id="${$('#firstName').val()}"class="outputEl">`
+        outputVal += '<td class="outputEl">' + $('#firstName').val() + '</td>';
+        outputVal += '<td class="outputEl">' + $('#lastName').val() + '</td>';
+        outputVal += '<td class="outputEl">' + $('#ID').val() + '</td>';
+        outputVal += '<td class="outputEl">' + $('#title').val() + '</td>';
+        outputVal += '<td class="outputEl">' + parseInt( $('#salary').val() ) + '</td>';
+        outputVal += '<td class="outputEl"><input type="button" value="Delete" class="btn-default"></td>';
         outputVal += '</tr>';
-        // $('.deleteButtons').append( deleteButton );
-        $('#inputOut').append( outputVal );
-        totalMonthly += employee.salary;
-    } // end for
-    // $('#deleteButtons').append( deleteButton );
+    $('tr:empty').remove();
+    $('#inputOut').append( outputVal );
     // append total monthly expenses
-    document.getElementById( 'outputAmount' ).innerHTML = '<h3>Total Monthly: ' + totalMonthly + '</h3>';
-    if ( totalMonthly > 20000 ) {
-        document.getElementById( 'outputAmount' ).style.color = "red";
-    } // end if
+
 } // end runOutput
 
 function deleteRow() {

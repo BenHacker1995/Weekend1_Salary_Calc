@@ -27,7 +27,9 @@ $( document ).ready( function(){
             $('.input').val(''); // clear inputs on inputButton click
     });
     // let deleteButton = $('button .deleteButton');
-    $('.button').on( 'click', function() {
+    // $('.deleteButtons .btn-default').click( function() {
+        $('table').on('click', 'input[type="button"]', function(){
+            // $(this).closest('tr').remove()
         // deleteRow();
         // $( this ).closest( 'td' ).find( '.delete' ).remove();
         console.log('in deleteRow');
@@ -43,13 +45,13 @@ function runOutput() {
     for (employee of employees ){
         // outputButton.append( deleteButton );
         // add table row
-        let outputVal = `<tr id="${employee.firstName}.${employee.lastName}">`;
+        let outputVal = `<tr id="${employee.firstName}.${employee.lastName}" class="output">`;
             outputVal += '<td class="output">' + employee.firstName + '</td>';
             outputVal += '<td class="output">' + employee.lastName + '</td>';
             outputVal += '<td class="output">' + employee.ID + '</td>';
             outputVal += '<td class="output">' + employee.title + '</td>';
             outputVal += '<td class="output">' + employee.salary + '</td>';
-            outputVal += '<td class+"deleteButtons"><button class="button">Delete</button></td>'
+            outputVal += '<td class="output"><input type="button" value="Delete" class="btn-default"></td>'
         outputVal += '</tr>';
         // $('.deleteButtons').append( deleteButton );
         $('#inputOut').append( outputVal );

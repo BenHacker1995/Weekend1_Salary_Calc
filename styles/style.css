@@ -7,6 +7,11 @@ input {
     
 }
 
+/* .btn-group {
+
+    display: inline;
+} */
+
 #inputButton,#outputAmount {
     margin: 10px;
     float: right;

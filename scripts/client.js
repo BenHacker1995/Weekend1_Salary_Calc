@@ -13,7 +13,6 @@ class Employee{
 $( document ).ready( function(){
     $( '.input' ).val( '' );
     $( '.outputEl' ).remove();
-    // let totalMonthly = 0;
     let totalOutput = $( '#outputAmount' );
     document.getElementById( 'outputAmount' ).innerHTML = '<h3>Total Monthly: 0</h3>' ;
     $('#submitButton').on( 'click', function() {
@@ -27,23 +26,32 @@ $( document ).ready( function(){
             runOutput();
             $('.input').val(''); // clear inputs on inputButton click
     });
+    // let deleteButton = $('button .deleteButton');
+    $('button').on( 'click', function() {
+        // deleteRow();
+        // $( this ).closest( 'td' ).find( '.delete' ).remove();
+        console.log('in deleteRow');
+    });
 });
 
+// let deleteButton = '<tr><table class="deleteButtons"><tr><td><button class="delete">Delete</button></td></tr></table>'
+let deleteButton = '<tr><td><button class="delete">Delete</button></td></tr>';
+
 function runOutput() {
-    let output = $( '#outputTable' );
-    $( '.outputEl' ).empty(); // empty data for new input
+    $( '#inputOut' ).empty(); // empty data for new input
     let totalMonthly = 0;
     for (employee of employees ){
+        // outputButton.append( deleteButton );
         // add table row
-        let outputVal = `<tr id="${employee.firstName} ${employee.lastName}" class="outputEl">`;
+        let outputVal = `<tr id="${employee.firstName}.${employee.lastName}" class="outputEl">`;
             outputVal += '<td>' + employee.firstName + '</td>';
             outputVal += '<td>' + employee.lastName + '</td>';
             outputVal += '<td>' + employee.ID + '</td>';
             outputVal += '<td>' + employee.title + '</td>';
             outputVal += '<td>' + employee.salary + '</td>';
-            outputVal += `<td><button id="${employee.firstName} ${employee.lastName}">Delete</button></td>`
         outputVal += '</tr>';
-        output.append( outputVal );
+        $('.deleteButtons').append( deleteButton );
+        $('#inputOut').append( outputVal );
         totalMonthly += employee.salary;
     } // end for
     // append total monthly expenses
@@ -52,3 +60,11 @@ function runOutput() {
         document.getElementById( 'outputAmount' ).style.color = "red";
     } // end if
 } // end runOutput
+
+function deleteRow() {
+    // console.log('in deleteRow');
+    
+    
+}
+// function on click
+// removes current row entirely
